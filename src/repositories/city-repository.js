@@ -67,7 +67,7 @@ class CityRepository {
     async getAllCities(filter) { // filter can be empty also 
         try{
             if (filter.name) {
-                const cities = await City.findAll({
+                const cities = await City.findAll  ({
                     where : {
                         name : {
                             [Op.startsWith] : filter.name
