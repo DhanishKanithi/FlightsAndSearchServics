@@ -1,5 +1,5 @@
 const {FlightService} = require('../services/index');
-const {SuccessCodes} = require('../utils/error-codes'); 
+const {SuccessCodes, ServerErrorCodes} = require('../utils/error-codes'); 
 
 const flightService = new FlightService();
 
@@ -25,7 +25,7 @@ const create = async (req, res) => {
     }
     catch(error) {
         console.log(error);
-        return res.status(500).json({
+        return res.status(ServerErrorCodes.INTERNAL_SERVER_ERROR).json({
             data : {},
             success: false,
             message: 'Not able to create a flight',
@@ -45,7 +45,7 @@ const getAll = async(req,res) => {
         })
         }
     catch(error) {
-        return res.status(500).json({
+        return res.status(ServerErrorCodes.INTERNAL_SERVER_ERROR).json({
             data : {},
             success : false,
             message : 'Not able to fetch data of flights',
@@ -65,7 +65,7 @@ const get = async(req, res) => {
         })
         }
     catch(error) {
-        return res.status(500).json({
+        return res.status(ServerErrorCodes.INTERNAL_SERVER_ERROR).json({
             data : {},
             success : false,
             message : 'Not able to fetch data of flights',
@@ -85,7 +85,7 @@ const update = async(req,res) => {
         })
         }
     catch(error) {
-        return res.status(500).json({
+        return res.status(ServerErrorCodes.INTERNAL_SERVER_ERROR).json({
             data : {},
             success : false,
             message : 'Not able to update data of flights',
